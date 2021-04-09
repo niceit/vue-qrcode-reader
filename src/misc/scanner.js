@@ -63,7 +63,7 @@ export const keepScanning = (videoElement, options) => {
 
         window.requestAnimationFrame(processFrame({
           lastScanned: timeNow,
-          contentBefore: content ?? contentBefore,
+          contentBefore: content ? content : contentBefore,
           locationBefore: location
         }))
       } else {

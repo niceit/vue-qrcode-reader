@@ -20,7 +20,7 @@ class Camera {
   getCapabilities() {
     const [track] = this.stream.getVideoTracks();
     // Firefox does not yet support getCapabilities as of August 2020
-    return track?.getCapabilities?.() ?? {};
+    return track.getCapabilities() ? track.getCapabilities() :  {};
   }
 }
 
@@ -75,7 +75,7 @@ export default async function(videoEl, { camera, torch }) {
     throw new InsecureContextError();
   }
 
-  if (navigator?.mediaDevices?.getUserMedia === undefined) {
+  if (navigator.mediaDevices.getUserMedia === undefined) {
     throw new StreamApiNotSupportedError();
   }
 
